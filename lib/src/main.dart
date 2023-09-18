@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:wrapper_gui/src/gRPC/DownloaderService.dart';
 import 'package:wrapper_gui/src/widgets/FormFields.dart';
+import 'dart:io';
 
 void main() {
   runApp(const MyApp());
@@ -12,6 +14,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    DownloaderService().init();
     return MaterialApp(
       title: 'Flutter Demo',
         theme: ThemeData(

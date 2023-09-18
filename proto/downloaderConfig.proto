@@ -3,7 +3,7 @@ syntax = "proto3";
 package downloaderConfig;
 
 
-service DownloaderService {
+service DownloaderManagerService {
     rpc ExecuteCommand(DownloaderConfig) returns (DownloaderConfig);
 }
 
