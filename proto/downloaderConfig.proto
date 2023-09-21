@@ -1,10 +1,11 @@
 syntax = "proto3";
 
 package downloaderConfig;
+option java_package = "org.protoc.DownloaderProto";  // Overridden package for Java specifically
 
 
 service DownloaderManagerService {
-    rpc ExecuteCommand(DownloaderConfig) returns (DownloaderConfig);
+    rpc ExecuteCommand(DownloaderRequest) returns (DownloaderResponse);
 }
 
 message DownloaderRequest {

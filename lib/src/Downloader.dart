@@ -5,16 +5,19 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:logging/logging.dart';
+import 'package:wrapper_gui/src/widgets/DrawerListView.dart';
 import 'package:wrapper_gui/src/widgets/FormFields.dart';
+import 'package:wrapper_gui/src/widgets/LoadingDialogNoCallback.dart';
 
+import 'gRPC/ServiceCalls.dart';
 import 'generated/downloaderConfig.pb.dart';
 
 
 
 
 Directory? selectedDirectory;
-final String currentDir = Directory.current.path;
-File configProtoFile = File("$currentDir\\DownloaderConfig.bin");
+//final String currentDir = Directory.current.path;
+//File configProtoFile = File("$currentDir\\DownloaderConfig.bin");
 DownloaderConfig downloaderConfig = DownloaderConfig();
 final logger = Logger("Downloader.dart");
 
@@ -100,7 +103,7 @@ class _DownloaderFormState extends State<DownloaderForm> {
     // FilePickerWidget filePickerWidget =  FilePickerWidget('bin', _videosList );
     return Scaffold(
       drawer: const Drawer(
-        // child: DrawerListView(),
+        child: DrawerListView(),
       ),
       appBar: AppBar(title: const Text('Downloader.')),
       body: Padding(
@@ -124,9 +127,9 @@ class _DownloaderFormState extends State<DownloaderForm> {
                       builder: (context,snapshot) {
                           return Column(
                             children: [
-                              FormFields().textField('url', "profileLink", "username profile full url"),
+                              FormFields().textField('https://www.youtube.com/watch?v=L7mfjvdnPno&list=RDMM&index=26&ab_channel=TrevorDaniel', "url", "username profile full url"),
                               FormFields().divider(),
-                              FormFields().textField("outputLocation", "outputLocation", "folder on your PC where output files be located"),
+                              FormFields().textField("E:\\Resources\\test666", "path", "folder on your PC where output files be located"),
                               FormFields().divider(),
                               // filePickerWidget,
                             ],
@@ -143,24 +146,18 @@ class _DownloaderFormState extends State<DownloaderForm> {
                   Expanded(
                     child: ElevatedButton(
                       onPressed: () async {
-                        // if (_formKey.currentState?.saveAndValidate() ?? false) {
-                        //   downloaderConfig.linkToProfile = _formKey.currentState?.value['profileLink'];
-                        //   downloaderConfig.links.add(_formKey.currentState?.value['profileLink']);
-                        //   downloaderConfig.outputAsString = _formKey.currentState?.value['outputLocation'];
-                        //   downloaderConfig.platform = _formKey.currentState?.value['platform'];
-                        //   downloaderConfig.task = _formKey.currentState?.value['task'];
-                        //   logger.info("${filePickerWidget.videosList.videosList} VIDEOlSISTALACH ONLY \n \n \n");
-                        //   downloaderConfig.videos.clear(); // delete previous videos from query, they aren't required in the new call..
-                        //   downloaderConfig.links.clear();
-                        //   downloaderConfig.videos.addAll(filePickerWidget.videosList.videosList);
+                        if (_formKey.currentState?.saveAndValidate() ?? false) {
+                          logger.info(downloaderConfig);
+                          downloaderConfig.link = _formKey.currentState?.value['url'];
+                          downloaderConfig.path = _formKey.currentState?.value['path'];
                         //   //send request
-                        //   addToTaskAndRun();
+                          addToTaskAndRun();
                         //
                         //   configProtoFile.writeAsBytes(downloaderConfig.writeToBuffer());
-                        // } else {
-                        //   debugPrint(_formKey.currentState?.value.toString());
-                        //   debugPrint('validation failed');
-                        // }
+                        } else {
+                          debugPrint(_formKey.currentState?.value.toString());
+                          debugPrint('validation failed');
+                        }
                       },
                       child: const Text(
                         'Submit',
@@ -189,22 +186,20 @@ class _DownloaderFormState extends State<DownloaderForm> {
         ),
       ),
     );
-
-
-
-
   }
 
-  // Future<String> addToTaskAndRun() async {
-  //   final String result = await LoadingDialogNoCallBack()
-  //       .showLoadingDialog<DownloaderResponse>(
-  //       context,
-  //           () => ServiceCalls().downloaderCall(downloaderConfig),
-  //       loadingText: 'Downloading',
-  //       successText: "Finished Downloading");
-  //
-  //   return result;
-  // }
+  Future<String> addToTaskAndRun() async {
+    logger.info("downloaderConfig: $downloaderConfig");
+    DownloaderRequest request = DownloaderRequest();
+    request.config = downloaderConfig;
+    final String result = await LoadingDialogNoCallBack()
+        .showLoadingDialog<DownloaderResponse>(
+        context,
+            () => ServiceCalls().downloaderCall(request),
+        loadingText: 'Downloading',
+        successText: "Finished Downloading");
 
+    return result;
+  }
 
 }

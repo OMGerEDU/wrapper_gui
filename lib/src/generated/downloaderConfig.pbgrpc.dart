@@ -21,10 +21,10 @@ export 'downloaderConfig.pb.dart';
 
 @$pb.GrpcServiceName('downloaderConfig.DownloaderManagerService')
 class DownloaderManagerServiceClient extends $grpc.Client {
-  static final _$executeCommand = $grpc.ClientMethod<$0.DownloaderConfig, $0.DownloaderConfig>(
+  static final _$executeCommand = $grpc.ClientMethod<$0.DownloaderRequest, $0.DownloaderResponse>(
       '/downloaderConfig.DownloaderManagerService/ExecuteCommand',
-      ($0.DownloaderConfig value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $0.DownloaderConfig.fromBuffer(value));
+      ($0.DownloaderRequest value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.DownloaderResponse.fromBuffer(value));
 
   DownloaderManagerServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -32,7 +32,7 @@ class DownloaderManagerServiceClient extends $grpc.Client {
       : super(channel, options: options,
         interceptors: interceptors);
 
-  $grpc.ResponseFuture<$0.DownloaderConfig> executeCommand($0.DownloaderConfig request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseFuture<$0.DownloaderResponse> executeCommand($0.DownloaderRequest request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$executeCommand, request, options: options);
   }
 }
@@ -42,18 +42,18 @@ abstract class DownloaderManagerServiceBase extends $grpc.Service {
   $core.String get $name => 'downloaderConfig.DownloaderManagerService';
 
   DownloaderManagerServiceBase() {
-    $addMethod($grpc.ServiceMethod<$0.DownloaderConfig, $0.DownloaderConfig>(
+    $addMethod($grpc.ServiceMethod<$0.DownloaderRequest, $0.DownloaderResponse>(
         'ExecuteCommand',
         executeCommand_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $0.DownloaderConfig.fromBuffer(value),
-        ($0.DownloaderConfig value) => value.writeToBuffer()));
+        ($core.List<$core.int> value) => $0.DownloaderRequest.fromBuffer(value),
+        ($0.DownloaderResponse value) => value.writeToBuffer()));
   }
 
-  $async.Future<$0.DownloaderConfig> executeCommand_Pre($grpc.ServiceCall call, $async.Future<$0.DownloaderConfig> request) async {
+  $async.Future<$0.DownloaderResponse> executeCommand_Pre($grpc.ServiceCall call, $async.Future<$0.DownloaderRequest> request) async {
     return executeCommand(call, await request);
   }
 
-  $async.Future<$0.DownloaderConfig> executeCommand($grpc.ServiceCall call, $0.DownloaderConfig request);
+  $async.Future<$0.DownloaderResponse> executeCommand($grpc.ServiceCall call, $0.DownloaderRequest request);
 }

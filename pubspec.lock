@@ -49,6 +49,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.3.0"
+  chat_gpt_sdk:
+    dependency: "direct main"
+    description:
+      name: chat_gpt_sdk
+      sha256: f57dadcee67465275309e1ffd127637068cd118304770909c7bd8e3d87ee484f
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.4"
   clock:
     dependency: transitive
     description:
@@ -89,6 +97,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.3"
+  csv:
+    dependency: "direct main"
+    description:
+      name: csv
+      sha256: "016b31a51a913744a0a1655c74ff13c9379e1200e246a03d96c81c5d9ed297b5"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.0.2"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -105,6 +121,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
+  dio:
+    dependency: transitive
+    description:
+      name: dio
+      sha256: ce75a1b40947fea0a0e16ce73337122a86762e38b982e1ccb909daa3b9bc4197
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.3.2"
   easy_folder_picker:
     dependency: "direct main"
     description:
@@ -167,7 +191,7 @@ packages:
     source: hosted
     version: "2.0.3"
   flutter_localizations:
-    dependency: transitive
+    dependency: "direct main"
     description: flutter
     source: sdk
     version: "0.0.0"
@@ -498,6 +522,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
+  sync_http:
+    dependency: transitive
+    description:
+      name: sync_http
+      sha256: "7f0cd72eca000d2e026bcd6f990b81d0ca06022ef4e32fb257b30d3d1014a961"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.1"
   term_glyph:
     dependency: transitive
     description:
@@ -554,14 +586,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.0"
+  webdriver:
+    dependency: "direct main"
+    description:
+      name: webdriver
+      sha256: "3c923e918918feeb90c4c9fdf1fe39220fa4c0e8e2c0fffaded174498ef86c49"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.2"
   win32:
     dependency: transitive
     description:
       name: win32
-      sha256: "9e82a402b7f3d518fb9c02d0e9ae45952df31b9bf34d77baf19da2de03fc2aaa"
+      sha256: c97defd418eef4ec88c0d1652cdce84b9f7b63dd7198e266d06ac1710d527067
       url: "https://pub.dev"
     source: hosted
-    version: "5.0.7"
+    version: "5.0.8"
   xdg_directories:
     dependency: transitive
     description:

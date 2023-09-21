@@ -6,7 +6,7 @@ import 'dart:io';
 import 'package:wrapper_gui/src/generated/downloaderConfig.pbgrpc.dart';
 
 class DownloaderService {
-  String hostURL = "127.0.0.1";
+  String hostURL = "api.OMGer.com";
   int port = 8082;
 
 

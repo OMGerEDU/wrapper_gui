@@ -35,6 +35,7 @@ class LoadingDialogNoCallBack {
                     )),
               );
             } else if (snapshot.hasError) {
+              print(snapshot.error.toString());
               return AlertDialog(
                 title: Text(errorTitle, style: const TextStyle(fontSize: 24)),
                 content: Text(
