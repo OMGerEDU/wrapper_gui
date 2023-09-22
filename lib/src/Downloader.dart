@@ -91,6 +91,7 @@ class DownloaderForm extends StatefulWidget {
 }
 
 class _DownloaderFormState extends State<DownloaderForm> {
+  List<String> selectedOutput = ["Video","Audio"];
   final _formKey = GlobalKey<FormBuilderState>();
   // VideoList _videosList = VideoList();
 
@@ -131,6 +132,7 @@ class _DownloaderFormState extends State<DownloaderForm> {
                               FormFields().divider(),
                               FormFields().textField("E:\\Resources\\test666", "path", "folder on your PC where output files be located"),
                               FormFields().divider(),
+                              //FormFields().dropDown(selectedOutput[0], "outputType", "Select download option:","download option", selectedOutput),
                               // filePickerWidget,
                             ],
                           );

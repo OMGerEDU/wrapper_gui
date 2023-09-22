@@ -3,7 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../Downloader.dart';
-import '../main.dart';
+import '../../main.dart';
 
 class DrawerListView extends StatelessWidget {
   const DrawerListView({

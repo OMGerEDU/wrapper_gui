@@ -28,7 +28,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     DownloaderService().init();
     MaterialColor colorCustom = MaterialColor(0, color);
 
