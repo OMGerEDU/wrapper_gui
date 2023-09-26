@@ -48,12 +48,15 @@ const DownloaderConfig$json = {
   '2': [
     {'1': 'link', '3': 1, '4': 1, '5': 9, '10': 'link'},
     {'1': 'path', '3': 2, '4': 1, '5': 9, '10': 'path'},
-    {'1': 'command', '3': 3, '4': 1, '5': 9, '10': 'command'},
+    {'1': 'downloadType', '3': 3, '4': 1, '5': 9, '10': 'downloadType'},
+    {'1': 'command', '3': 4, '4': 1, '5': 9, '10': 'command'},
+    {'1': 'isPlaylist', '3': 5, '4': 1, '5': 8, '10': 'isPlaylist'},
   ],
 };
 
 /// Descriptor for `DownloaderConfig`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List downloaderConfigDescriptor = $convert.base64Decode(
     'ChBEb3dubG9hZGVyQ29uZmlnEhIKBGxpbmsYASABKAlSBGxpbmsSEgoEcGF0aBgCIAEoCVIEcG'
-    'F0aBIYCgdjb21tYW5kGAMgASgJUgdjb21tYW5k');
+    'F0aBIiCgxkb3dubG9hZFR5cGUYAyABKAlSDGRvd25sb2FkVHlwZRIYCgdjb21tYW5kGAQgASgJ'
+    'Ugdjb21tYW5kEh4KCmlzUGxheWxpc3QYBSABKAhSCmlzUGxheWxpc3Q=');
 

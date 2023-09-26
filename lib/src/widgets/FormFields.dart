@@ -124,7 +124,7 @@ class FormFields {
 
 
   Widget dropDown(String initialValue, String id, String label, String hint, List<String> options) {
-    options.insert(0, 'None');
+    // options.insert(0, 'None');
     return FormBuilderDropdown<String>(
       initialValue: initialValue,
       name: id,

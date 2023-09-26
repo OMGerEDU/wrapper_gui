@@ -130,7 +130,9 @@ class DownloaderConfig extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DownloaderConfig', package: const $pb.PackageName(_omitMessageNames ? '' : 'downloaderConfig'), createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'link')
     ..aOS(2, _omitFieldNames ? '' : 'path')
-    ..aOS(3, _omitFieldNames ? '' : 'command')
+    ..aOS(3, _omitFieldNames ? '' : 'downloadType', protoName: 'downloadType')
+    ..aOS(4, _omitFieldNames ? '' : 'command')
+    ..aOB(5, _omitFieldNames ? '' : 'isPlaylist', protoName: 'isPlaylist')
     ..hasRequiredFields = false
   ;
 
@@ -174,13 +176,31 @@ class DownloaderConfig extends $pb.GeneratedMessage {
   void clearPath() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.String get command => $_getSZ(2);
+  $core.String get downloadType => $_getSZ(2);
   @$pb.TagNumber(3)
-  set command($core.String v) { $_setString(2, v); }
+  set downloadType($core.String v) { $_setString(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasCommand() => $_has(2);
+  $core.bool hasDownloadType() => $_has(2);
   @$pb.TagNumber(3)
-  void clearCommand() => clearField(3);
+  void clearDownloadType() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get command => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set command($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasCommand() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearCommand() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $core.bool get isPlaylist => $_getBF(4);
+  @$pb.TagNumber(5)
+  set isPlaylist($core.bool v) { $_setBool(4, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasIsPlaylist() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearIsPlaylist() => clearField(5);
 }
 
 

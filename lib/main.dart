@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:process_run/shell.dart';
+import 'package:wrapper_gui/src/Downloader.dart';
 import 'package:wrapper_gui/src/gRPC/DownloaderService.dart';
 import 'package:wrapper_gui/src/widgets/DrawerListView.dart';
 import 'package:wrapper_gui/src/widgets/FormFields.dart';
@@ -29,6 +31,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     DownloaderService().init();
+    _runJar();
     MaterialColor colorCustom = MaterialColor(0, color);
 
     return MaterialApp(
@@ -45,7 +48,13 @@ class MyApp extends StatelessWidget {
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
-
+//../youtubeDownload-1.0-SNAPSHOT-jar-with-dependencies.jar
+   void _runJar() async {
+     // String path = Directory.current.path;
+     var shell = Shell();
+     await shell.run('java -jar ../youtubeDownload-1.0-SNAPSHOT-jar-with-dependencies.jar');
+     logger.info("D");
+   }
 }
 
 
@@ -96,4 +105,6 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
     );
   }
+
+
 }

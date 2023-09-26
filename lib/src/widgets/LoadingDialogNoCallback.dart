@@ -8,6 +8,7 @@ class LoadingDialogNoCallBack {
       Future<T> Function() futureCall,
       {String loadingText = 'Loading',
         String successText = 'Done',
+        String successMessage = 'Mission succeed',
         String errorTitle = 'Error',
         String okButtonText = 'Ok',
       }) async {
@@ -58,12 +59,12 @@ class LoadingDialogNoCallBack {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text(snapshot.hasError ? snapshot.error.toString() : "Mission succeed", style: const TextStyle(fontSize: 20)),
+                    Text(snapshot.hasError ? snapshot.error.toString() : successMessage, style: const TextStyle(fontSize: 20)),
                     const SizedBox(height: 20),
-                    const Text(
-                      'You can implement additional dialogs or components here...',
-                      style: TextStyle(fontSize: 20),
-                    ),
+                    // const Text(
+                    //   'You can implement additional dialogs or components here...',
+                    //   style: TextStyle(fontSize: 20),
+                    // ),
                   ],
                 ),
                 actions: <Widget>[

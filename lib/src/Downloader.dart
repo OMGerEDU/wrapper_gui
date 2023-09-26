@@ -92,6 +92,7 @@ class DownloaderForm extends StatefulWidget {
 
 class _DownloaderFormState extends State<DownloaderForm> {
   List<String> selectedOutput = ["Video","Audio"];
+  List<String> playList = ["True","False"];
   final _formKey = GlobalKey<FormBuilderState>();
   // VideoList _videosList = VideoList();
 
@@ -132,7 +133,9 @@ class _DownloaderFormState extends State<DownloaderForm> {
                               FormFields().divider(),
                               FormFields().textField("E:\\Resources\\test666", "path", "folder on your PC where output files be located"),
                               FormFields().divider(),
-                              //FormFields().dropDown(selectedOutput[0], "outputType", "Select download option:","download option", selectedOutput),
+                              FormFields().dropDown(selectedOutput[0], "downloadType", "Select download option:","download option", selectedOutput),
+                              FormFields().divider(),
+                              FormFields().dropDown(playList[0], "isList", "Download the whole list?","List?", playList),
                               // filePickerWidget,
                             ],
                           );
@@ -152,9 +155,11 @@ class _DownloaderFormState extends State<DownloaderForm> {
                           logger.info(downloaderConfig);
                           downloaderConfig.link = _formKey.currentState?.value['url'];
                           downloaderConfig.path = _formKey.currentState?.value['path'];
+                          downloaderConfig.downloadType = _formKey.currentState?.value['downloadType'];
+                          downloaderConfig.isPlaylist = (_formKey.currentState?.value['isList']?.toString().toLowerCase() == "true")  ? true: false;
                         //   //send request
                           addToTaskAndRun();
-                        //
+                        //save to file
                         //   configProtoFile.writeAsBytes(downloaderConfig.writeToBuffer());
                         } else {
                           debugPrint(_formKey.currentState?.value.toString());

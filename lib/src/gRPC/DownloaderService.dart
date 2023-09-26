@@ -50,7 +50,7 @@ class DownloaderService {
         return true;
       },
     );
-    final channel = ClientChannel('api.OMGer.com', port: 8082, options: ChannelOptions(credentials: credentials));
+    final channel = ClientChannel('127.0.0.1', port: 8082, options: ChannelOptions(credentials: credentials));
     _client = DownloaderManagerServiceClient(channel);
     print("Channel created with host $hostURL:$port");
   }
