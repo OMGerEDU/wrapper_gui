@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:logging/logging.dart';
 import 'package:process_run/shell.dart';
 import 'package:wrapper_gui/src/Downloader.dart';
 import 'package:wrapper_gui/src/gRPC/DownloaderService.dart';
+import 'package:wrapper_gui/src/gRPC/ServerManager.dart';
 import 'package:wrapper_gui/src/widgets/DrawerListView.dart';
 import 'package:wrapper_gui/src/widgets/FormFields.dart';
 import 'dart:io';
@@ -31,7 +33,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     DownloaderService().init();
-    _runJar();
+    //_runJar();
     MaterialColor colorCustom = MaterialColor(0, color);
 
     return MaterialApp(
@@ -63,14 +65,30 @@ class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
   final String title;
 
+
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage> with WidgetsBindingObserver {
+
+  final serverManager = ServerManager();
+
+  @override
+  void initState() {
+    super.initState();
+    serverManager.startServer();
+  }
+
+  @override
+  void dispose() {
+    serverManager.stopServer();
+    super.dispose();
+  }
 
   final _formKey = GlobalKey<FormBuilderState>();
   Widget build(BuildContext context) {
+    //initState();
     return Scaffold(
         drawer: const Drawer(
           child: DrawerListView(),
